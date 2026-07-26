@@ -7,7 +7,7 @@ forge distills your sentence into a circuit-board mark — straight traces,
 solder-pad dots, an octagon shackle. Built with vanilla HTML/CSS/JS, no
 dependencies, no build step. Drop the folder on any static host and it runs.
 
-**Live at:** _(add your Neocities URL here)_
+**Live at:** euripidec.github.io/Sigil-Forge/
 
 ---
 
