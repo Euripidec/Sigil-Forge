@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIGIL//FORGE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="sigil.js" defer></script>
+</head>
+<body>
+
+<header>
+  <h1>SIGIL<span class="slash">//</span>FORGE</h1>
+  <p>a DaemonSoftworks ritual instrument</p>
+</header>
+
+<div class="wrap">
+  <div class="panel">
+    <label class="field-label" for="intent">[ INTENT ]</label>
+    <input id="intent" type="text" autocomplete="off" spellcheck="false"
+           placeholder="I FINISH WHAT I START" value="I finish what I start">
+    <div class="distilled" id="distilled" aria-live="polite"></div>
+
+    <ul class="rules" id="rules">
+      <li class="rules-title" aria-hidden="true">[ THE FOUR RULES ]</li>
+      <li id="rule-tense"><span class="mark">[--]</span>
+        <span>present tense<br><small>the sigil speaks of now, never later</small></span></li>
+      <li id="rule-want"><span class="mark">[--]</span>
+        <span>never "I want"<br><small>wanting keeps a thing at arm's length</small></span></li>
+      <li id="rule-real" class="honor"><span class="mark">[??]</span>
+        <span>be realistic<br><small>only you can judge this one</small></span></li>
+      <li id="rule-words"><span class="mark">[--]</span>
+        <span>precise, ~7 words<br><small id="word-count"></small></span></li>
+      <li id="rule-negative"><span class="mark">[--]</span>
+        <span>bonus: no negative words<br><small>phrase it toward, never away</small></span></li>
+    </ul>
+
+    <div class="buttons">
+      <button id="btn-redraw">&gt; forge again</button>
+      <button id="btn-download">download svg</button>
+      <button id="btn-copy">copy svg</button>
+    </div>
+  </div>
+
+  <div class="stage" id="stage" aria-label="Generated sigil"></div>
+
+  <p class="hint">the letters shape the mark, chance arranges it — no two forgings match</p>
+</div>
+
+</body>
+</html>

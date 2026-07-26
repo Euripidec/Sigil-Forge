@@ -1,0 +1,213 @@
+  :root {
+    --void:  #0d0d0f;
+    --panel: #131316;
+    --line:  #2a2a30;
+    --bone:  #e8e4d8;
+    --dim:   #6f6f78;
+    --blood: #e63946;
+    --deep:  #8e1c2c;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--void);
+    color: var(--bone);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 15px;
+    min-height: 100vh;
+  }
+
+  header {
+    border-bottom: 1px solid var(--line);
+    padding: 2rem 1rem 1.4rem;
+    text-align: center;
+  }
+  header h1 {
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-indent: 0.28em;
+  }
+  header h1 .slash { color: var(--blood); }
+  header p { color: var(--dim); margin-top: 0.5rem; font-size: 0.85rem; }
+  header p::before { content: "// "; color: var(--deep); }
+
+  .wrap {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 1.4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1.4rem 1rem 3rem;
+  }
+  @media (max-width: 860px) { .wrap { grid-template-columns: 1fr; } }
+
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    padding: 1.3rem;
+    align-self: start;
+  }
+  .field-label {
+    display: block;
+    color: var(--blood);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.55rem;
+  }
+  #intent {
+    width: 100%;
+    background: var(--void);
+    border: 1px solid var(--line);
+    color: var(--bone);
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 0.7rem 0.75rem;
+    outline: none;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  #intent:focus { border-color: var(--blood); }
+
+  .distilled {
+    margin-top: 0.7rem;
+    min-height: 1.8em;
+    font-size: 0.95rem;
+    letter-spacing: 0.14em;
+    line-height: 1.8;
+    word-break: break-word;
+  }
+  .distilled .keep { color: var(--blood); font-weight: 700; }
+  .distilled .cut {
+    color: var(--dim);
+    opacity: 0.6;
+    text-decoration: line-through;
+    text-decoration-color: var(--deep);
+    text-decoration-thickness: 2px;
+  }
+
+  .rules {
+    list-style: none;
+    border-top: 1px solid var(--line);
+    margin-top: 1.15rem;
+    padding-top: 1rem;
+    font-size: 0.85rem;
+  }
+  .rules .rules-title {
+    color: var(--blood);
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    font-size: 0.75rem;
+    margin-bottom: 0.6rem;
+  }
+  .rules li { display: flex; gap: 0.6rem; margin-bottom: 0.5rem; align-items: baseline; }
+  .rules li small { color: var(--dim); display: block; font-size: 0.78rem; }
+  .rules .mark { flex: none; width: 3.2em; font-weight: 700; }
+  .rules li.pass .mark { color: var(--bone); }
+  .rules li.fail .mark, .rules li.fail { color: var(--blood); }
+  .rules li.warn .mark { color: var(--deep); }
+  .rules li.honor .mark { color: var(--dim); }
+
+  .buttons { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-top: 1.15rem; }
+  button {
+    flex: 1 1 45%;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.75rem 0.4rem;
+    border: 1px solid var(--blood);
+    background: transparent;
+    color: var(--blood);
+    cursor: pointer;
+    transition: background 0.12s, color 0.12s, opacity 0.12s;
+  }
+  button:hover:not(:disabled) { background: var(--blood); color: var(--void); }
+  button:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+  button:disabled { opacity: 0.3; cursor: not-allowed; }
+  #btn-redraw { flex: 1 1 100%; }
+
+  .stage {
+    position: relative;
+    background: var(--void);
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.2rem;
+    min-height: 480px;
+    overflow: hidden;
+  }
+  .stage::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(0deg,
+      transparent 0 2px, rgba(232, 228, 216, 0.025) 2px 3px);
+    pointer-events: none;
+  }
+  .stage::after {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    pointer-events: none;
+    background:
+      linear-gradient(var(--blood), var(--blood)) top left / 16px 2px,
+      linear-gradient(var(--blood), var(--blood)) top left / 2px 16px,
+      linear-gradient(var(--blood), var(--blood)) top right / 16px 2px,
+      linear-gradient(var(--blood), var(--blood)) top right / 2px 16px,
+      linear-gradient(var(--blood), var(--blood)) bottom left / 16px 2px,
+      linear-gradient(var(--blood), var(--blood)) bottom left / 2px 16px,
+      linear-gradient(var(--blood), var(--blood)) bottom right / 16px 2px,
+      linear-gradient(var(--blood), var(--blood)) bottom right / 2px 16px;
+    background-repeat: no-repeat;
+  }
+  .stage svg { width: min(100%, 500px); height: auto; display: block; }
+
+  /* soft reveal — the sigil materializes out of the dark */
+  .stage svg.reveal {
+    animation: materialize 1.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+    will-change: opacity, filter, transform;
+  }
+  @keyframes materialize {
+    0%   { opacity: 0; filter: blur(4px); transform: scale(0.985); }
+    45%  { opacity: 0.55; filter: blur(1.5px); }
+    100% { opacity: 1; filter: blur(0); transform: scale(1); }
+  }
+  /* the forge log dissolves before the sigil arrives */
+  .forge-log.fade-out { animation: logOut 0.3s ease forwards; }
+  @keyframes logOut { to { opacity: 0; } }
+
+  .stage .blocked-msg {
+    color: var(--dim);
+    text-align: center;
+    max-width: 30ch;
+    line-height: 1.7;
+    font-size: 0.9rem;
+  }
+  .stage .blocked-msg::before { content: "[ LOCKED ] "; color: var(--blood); font-weight: 700; }
+
+  .forge-log { font-size: 0.9rem; line-height: 2; color: var(--dim); min-width: 24ch; }
+  .forge-log p::before { content: "> "; color: var(--blood); }
+  .forge-log p:last-child::after {
+    content: "_";
+    color: var(--blood);
+    animation: blink 0.6s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stage svg.reveal, .forge-log p:last-child::after { animation: none; opacity: 1; }
+    .forge-log.fade-out { animation: none; }
+  }
+
+  .hint {
+    grid-column: 1 / -1;
+    color: var(--dim);
+    text-align: center;
+    font-size: 0.8rem;
+  }
+  .hint::before { content: "// "; color: var(--deep); }
