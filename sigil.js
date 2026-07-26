@@ -209,7 +209,6 @@ function buildSigil(letters) {
 
   return [
     `<svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">`,
-    `<rect width="160" height="160" fill="#0d0d0f"/>`,
     octagon(56),
     parts.join("\n"),
     `</svg>`
